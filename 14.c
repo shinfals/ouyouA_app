@@ -26,11 +26,13 @@ int main(){
 }
 
 void game_rule(){
+  printf("%s\n", );(%s\n,"主人公のステータスはゲームスタート時にランダムできまる")；
+  printf("%s\n", );(%s\n,"移動時の操作は「W：上」「A：左」「S：下」「D：右」で操作する"）；
+  }
 
-}
 
 void initialize(){
-  
+
 }
 
 void game_start(){
