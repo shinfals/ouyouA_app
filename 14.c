@@ -5,10 +5,57 @@
 #define NUM_OF_LAST_PRINCESSES 1
 
 void game_rule();
-void initialize();
-void game_start();
+void end_initialize();
 
 int main(){
+  typedef struct Tokimeki_dungeon{
+    int PrincessEnemyNum;
+    int TresureChest;
+    int Door[4];
+  }Tokimeki_dungeon;
+
+  typedef struct Princess_enemy{
+    cahr name[256];
+    int Hp;
+    int Mp;
+    int Atk;
+    int Def;
+    int Spd;
+    int Skill;
+  }Princess_enemy;
+
+  typedef struct Prince{
+    char naem[] = "Prince";
+    int Hp;
+    int Mp;
+    int Atk;
+    int Def;
+    int Spd;
+    int Skill;
+    int flag = 0;
+    int x = 0;
+    int y = 0;
+  }Prince;
+
+  typedef struct Princess_support{
+    int Hp;
+    int Atk;
+    int Def;
+    int Spd;
+  }Princess_support;
+
+  typedef struct Weapon{
+    char name[256];
+    int Atk;
+    int Def;
+    int Skill;
+  }Weapon;
+
+  typedef struct Item{
+    int Hp;
+    int Mp
+  }Item;
+
   for(;;){
     int s;
     printf("１：ゲームルール表示\n");
@@ -18,7 +65,9 @@ int main(){
     if(s == 1){
       game_rule();//ルールを表示する関数
     }else if(s == 2){
-      initialize();//初期化関数
+      dungeon_initialize(Tokimeki_dungeon);//ダンジョン情報初期化
+      char_initialize(Princess_enemy,Princess_support);//キャラクター初期化
+      end_initialize();//終了条件初期化
       game_start();//ゲーム本体の関数
     }
   }
@@ -39,14 +88,9 @@ void game_rule(){
   printf("中ボスを倒すとラスボスに挑めるようになる/n" );
   printf("パーティが自分含め２人以上の場合、敵からの攻撃はランダムになる/n" );
   printf("宝箱からは武器が出る/n" );
-  }
-
-
-
-void initialize(){
-
 }
 
-void game_start(){
-
+//Abeshinnnosuke
+void end_initialize(){
+  end_flag = 0;
 }
