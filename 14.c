@@ -4,8 +4,9 @@
 #define NUM_OF_MIDDLE_PRINCESSES 3
 #define NUM_OF_LAST_PRINCESSES 1
 
-//rule();
-//game_start();
+void game_rule();
+void initialize();
+void game_start();
 
 int main(){
   for(;;){
@@ -15,10 +16,23 @@ int main(){
     printf("上記の中から数字を選択してください：");
     scanf("%d",&s);
     if(s == 1){
-      //rule();//ルールを表示する関数
+      game_rule();//ルールを表示する関数
     }else if(s == 2){
-      //game_start();
+      initialize();//初期化関数
+      game_start();//ゲーム本体の関数
     }
   }
   return 0;
+}
+
+void game_rule(){
+
+}
+
+void initialize(){
+  
+}
+
+void game_start(){
+
 }
