@@ -8,7 +8,7 @@
 #define NUM_OF_LAST_PRINCESSES 1
 
 void game_rule();
-void end_initialize();
+int end_initialize();
 
 int main(){
 
@@ -31,8 +31,8 @@ int main(){
     }else if(s == 2){
       //dungeon_initialize(Tokimeki);//ダンジョン情報初期化
       //char_initialize(PEnemy,PSupport);//キャラクター初期化
-      end_initialize();//終了条件初期化
-      game_start(prince);//ゲーム本体の関数
+      int end_flag = end_initialize();//終了条件初期化
+      game_start(prince,end_flag);//ゲーム本体の関数
     }
   }
   return 0;
@@ -54,6 +54,7 @@ void game_rule(){
   printf("宝箱からは武器が出る\n" );
 }
 
-void end_initialize(){
+int end_initialize(){
   int end_flag = 0;
+  return end_flag;
 }

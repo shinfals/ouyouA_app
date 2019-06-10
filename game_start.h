@@ -3,7 +3,7 @@
 #define ROOM_WIDTH 10
 #define ROOM_HEIGHT 7
 
-void game_start(Prince prince){
+void game_start(Prince prince,int end_flag){
 
   int count = 0;
   int map[MAP_WIDTH][MAP_HEIGHT] = {
@@ -59,7 +59,8 @@ void game_start(Prince prince){
     for(;;){
       char dir;
       int flag;
-      printf("移動する方向をWASDで選択してください：");
+      printf("移動する方向をWASDで選択してください\n");
+      printf("(/*ゲームを途中で終える際には「/」を入力してください*/):");
       scanf("%c",&dir);
       if(dir == '\n'){
         scanf("%c",&dir);
@@ -105,6 +106,10 @@ void game_start(Prince prince){
             flag = 1;
           }
           break;
+        case '/':
+          flag = 1;
+          end_flag = 1;
+          break;
         default:
           printf("WASDで入力してください\n");
           flag = 0;
@@ -119,5 +124,8 @@ void game_start(Prince prince){
     system("clear");
     //windowsの場合は下記を使用
     //system("cls");
+    if(end_flag){
+      break;
+    }
   }
 }
