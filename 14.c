@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "initialize.h"
+#include "game_start.h"
 
 #define NUM_OF_PRINCESSES 4
 #define NUM_OF_MIDDLE_PRINCESSES 3
@@ -8,53 +11,11 @@ void game_rule();
 void end_initialize();
 
 int main(){
-  typedef struct Tokimeki_dungeon{
-    int PrincessEnemyNum;
-    int TresureChest;
-    int Door[4];
-  }Tokimeki_dungeon;
 
-  typedef struct Princess_enemy{
-    cahr name[256];
-    int Hp;
-    int Mp;
-    int Atk;
-    int Def;
-    int Spd;
-    int Skill;
-  }Princess_enemy;
-
-  typedef struct Prince{
-    char naem[] = "Prince";
-    int Hp;
-    int Mp;
-    int Atk;
-    int Def;
-    int Spd;
-    int Skill;
-    int flag = 0;
-    int x = 0;
-    int y = 0;
-  }Prince;
-
-  typedef struct Princess_support{
-    int Hp;
-    int Atk;
-    int Def;
-    int Spd;
-  }Princess_support;
-
-  typedef struct Weapon{
-    char name[256];
-    int Atk;
-    int Def;
-    int Skill;
-  }Weapon;
-
-  typedef struct Item{
-    int Hp;
-    int Mp
-  }Item;
+  Tokimeki_dungeon Tokimeki[] = {};
+  Princess_enemy PEnemy[] = {};
+  Princess_support PSupport[] = {};
+  Prince prince = {"Prince",1000,1000,500,500,5,1,0,0,0};
 
   for(;;){
     int s;
@@ -63,20 +24,23 @@ int main(){
     printf("上記の中から数字を選択してください：");
     scanf("%d",&s);
     if(s == 1){
+      system("clear");
+      //windowsの場合は下記を使用
+      //system("cls");
       game_rule();//ルールを表示する関数
     }else if(s == 2){
-      dungeon_initialize(Tokimeki_dungeon);//ダンジョン情報初期化
-      char_initialize(Princess_enemy,Princess_support);//キャラクター初期化
+      //dungeon_initialize(Tokimeki);//ダンジョン情報初期化
+      //char_initialize(PEnemy,PSupport);//キャラクター初期化
       end_initialize();//終了条件初期化
-      game_start();//ゲーム本体の関数
+      game_start(prince);//ゲーム本体の関数
     }
   }
   return 0;
 }
 
 void game_rule(){
-  printf("主人公のステータスはゲームスタート時にランダムできまる\n")；
-  printf("移動時の操作は「W：上」「A：左」「S：下」「D：右」で操作する\n")；
+  printf("主人公のステータスはゲームスタート時にランダムできまる\n");
+  printf("移動時の操作は「W：上」「A：左」「S：下」「D：右」で操作する\n");
   printf("攻撃する順序は相手のSPDによる\n" );
   printf("ダメージは自身のATKー相手のDFF\n" );
   printf("スキルはMP1で1回使用可能\n");
@@ -90,7 +54,6 @@ void game_rule(){
   printf("宝箱からは武器が出る\n" );
 }
 
-//Abeshinnnosuke
 void end_initialize(){
-  end_flag = 0;
+  int end_flag = 0;
 }
