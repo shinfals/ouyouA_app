@@ -3,11 +3,10 @@
 #include "initialize.h"
 #include "game_start.h"
 #include "game_rule.h"
+#include "end_initialize.h"
 
 #define NUM_OF_ROOM 25
 #define NUM_OF_ENEMY 8
-
-int end_initialize();
 
 int main(){
 
@@ -28,6 +27,9 @@ int main(){
       //system("cls");
       game_rule();//ルールを表示する関数
     }else if(s == 2){
+      system("clear");
+      //windowsの場合は下記を使用
+      //system("cls");
       //dungeon_initialize(Tokimeki);//ダンジョン情報初期化
       //char_initialize(PEnemy,PSupport);//キャラクター初期化
       int end_flag = end_initialize();//終了条件初期化
@@ -35,9 +37,4 @@ int main(){
     }
   }
   return 0;
-}
-
-int end_initialize(){
-  int end_flag = 0;
-  return end_flag;
 }
