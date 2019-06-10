@@ -2,19 +2,18 @@
 #include <stdlib.h>
 #include "initialize.h"
 #include "game_start.h"
+#include "game_rule.h"
 
-#define NUM_OF_PRINCESSES 4
-#define NUM_OF_MIDDLE_PRINCESSES 3
-#define NUM_OF_LAST_PRINCESSES 1
+#define NUM_OF_ROOM 25
+#define NUM_OF_ENEMY 8
 
-void game_rule();
 int end_initialize();
 
 int main(){
 
-  Tokimeki_dungeon Tokimeki[] = {};
-  Princess_enemy PEnemy[] = {};
-  Princess_support PSupport[] = {};
+  Tokimeki_dungeon Tokimeki[NUM_OF_ROOM];
+  Princess_enemy PEnemy[NUM_OF_ENEMY];
+  Princess_support PSupport[NUM_OF_ENEMY-1];
   Prince prince = {"Prince",1000,1000,500,500,5,1,0,0,0};
 
   for(;;){
@@ -36,22 +35,6 @@ int main(){
     }
   }
   return 0;
-}
-
-void game_rule(){
-  printf("主人公のステータスはゲームスタート時にランダムできまる\n");
-  printf("移動時の操作は「W：上」「A：左」「S：下」「D：右」で操作する\n");
-  printf("攻撃する順序は相手のSPDによる\n" );
-  printf("ダメージは自身のATKー相手のDFF\n" );
-  printf("スキルはMP1で1回使用可能\n");
-  printf("洗脳は相手の残HPにより確率変動\n");
-  printf("アイテムは戦闘終了後にランダムでドロップ\n");
-  printf("宝箱は鍵を所持していないと空けられない\n");
-  printf("アイテムは探索中でも使用可能\n" );
-  printf("ある特定の武器はスキルを所持し、そのスキルを使用すると武器はなくなる\n" );
-  printf("中ボスを倒すとラスボスに挑めるようになる\n" );
-  printf("パーティが自分含め２人以上の場合、敵からの攻撃はランダムになる\n" );
-  printf("宝箱からは武器が出る\n" );
 }
 
 int end_initialize(){

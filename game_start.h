@@ -1,6 +1,6 @@
 #define MAP_WIDTH 5
 #define MAP_HEIGHT 5
-#define ROOM_WIDTH 10
+#define ROOM_WIDTH 16
 #define ROOM_HEIGHT 7
 
 void game_start(Prince prince,int end_flag){
@@ -14,22 +14,22 @@ void game_start(Prince prince,int end_flag){
     {0,0,0,0,0}
   };
   char draw_map[ROOM_HEIGHT][ROOM_WIDTH] = {
-    "*********",
-    "*       *",
-    "*       *",
-    "*       *",
-    "*       *",
-    "*       *",
-    "*********"
+    "***************",
+    "*             *",
+    "*             *",
+    "*             *",
+    "*             *",
+    "*             *",
+    "***************"
   };
   char draw_hidden[ROOM_HEIGHT][ROOM_WIDTH] = {
-    "         ",
-    "         ",
-    "         ",
-    "         ",
-    "         ",
-    "         ",
-    "         "
+    "               ",
+    "               ",
+    "               ",
+    "               ",
+    "               ",
+    "               ",
+    "               "
   };
 
   for(;;){
@@ -41,9 +41,9 @@ void game_start(Prince prince,int end_flag){
             printf("%s   ",draw_hidden[i]);
           }else{
             if(h == prince.y && j == prince.x){
-              draw_map[3][4] = 'P';
+              draw_map[3][7] = 'P';
             }else{
-              draw_map[3][4] = ' ';
+              draw_map[3][7] = ' ';
             }
             printf("%s   ",draw_map[i]);
           }
