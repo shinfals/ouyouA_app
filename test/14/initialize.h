@@ -1,9 +1,11 @@
 #pragma once
 //構造体はここにまとめます
 typedef struct Tokimeki_dungeon{
-  int PrincessEnemyNum;
-  int TresureChest;
-  int Door[4];
+  int PrincessEnemyNum; //0=なし　1=モブ１　2=モブ２　3=モブ３　4=ノブ４
+  //5=中ボス１　6=中ボス２　7=中ボス３　8=ラスボス
+  int TresureChest; //0=なし　1=銅　2=鉄　3=勇者　4=スカ
+  int Door[4]; //Door[0]=北　Door[1]=西　Door[2]=南 Door[3]=東
+  //Door=0 通路　Door=1 鍵　Door=2 壁
 }Tokimeki_dungeon;
 
 typedef struct Princess_enemy{
