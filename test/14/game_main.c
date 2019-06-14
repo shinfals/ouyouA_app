@@ -2,7 +2,7 @@
 #include "func.h"
 
 void gameMain(){
-	Tokimeki_dungeon Tokimeki[NUM_OF_ROOM_H][NUM_OF_ROOM_W];
+	Tokimeki_dungeon Tokimeki[MAP_WIDTH][MAP_HEIGHT];
 	Princess_enemy PEnemy[NUM_OF_ENEMY];
 	Princess_support PSupport[NUM_OF_ENEMY-1];
 	Prince prince = {"Prince",1000,1000,500,500,5,1,0,0,0};
