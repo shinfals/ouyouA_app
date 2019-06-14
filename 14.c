@@ -17,19 +17,19 @@ int main(){
 
   for(;;){
     int s;
-    printf("１：ゲームルール表示\n");
-    printf("２：ゲームスタート\n");
-    printf("上記の中から数字を選択してください：");
+    printf(u8"１：ゲームルール表示\n");
+    printf(u8"２：ゲームスタート\n");
+    printf(u8"上記の中から数字を選択してください：");
     scanf("%d",&s);
     if(s == 1){
-      system("clear");
+      // system("clear");
       //windowsの場合は下記を使用
-      //system("cls");
+      system("cls");
       game_rule();//ルールを表示する関数
     }else if(s == 2){
-      system("clear");
+      // system("clear");
       //windowsの場合は下記を使用
-      //system("cls");
+      system("cls");
       //dungeon_initialize(Tokimeki);//ダンジョン情報初期化
       //char_initialize(PEnemy,PSupport);//キャラクター初期化
       int end_flag = end_initialize();//終了条件初期化

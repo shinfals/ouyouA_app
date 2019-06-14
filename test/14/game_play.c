@@ -1,9 +1,7 @@
-#define MAP_WIDTH 5
-#define MAP_HEIGHT 5
-#define ROOM_WIDTH 16
-#define ROOM_HEIGHT 7
+#include <stdio.h>
+#include "func.h"
 
-void game_start(Prince prince,int end_flag){
+void game_Play(Prince prince,int end_flag){
 
   int count = 0;
   int map[MAP_WIDTH][MAP_HEIGHT] = {
