@@ -15,6 +15,9 @@ int main(){
   Princess_support PSupport[NUM_OF_ENEMY-1];
   Prince prince = {"Prince",1000,1000,500,500,5,1,0,0,0};
 
+  //windowsの場合は下記を使用
+  //system("cls");
+  system("clear");
   for(;;){
     int s;
     printf(u8"１：ゲームルール表示\n");
