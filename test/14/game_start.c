@@ -2,7 +2,7 @@
 #include "func.h"
 
 void gameStart(){
-	printf("game start!");
+	printf("game start!\n");
 	for(;;){
 		int s;
 		printf(u8"１：ゲームルール表示\n");
