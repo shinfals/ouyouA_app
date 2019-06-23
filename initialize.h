@@ -22,7 +22,9 @@ typedef struct Prince{
   int Def;
   int Spd;
   int Skill;
-  int flag;
+  int item;
+  int weapon;
+  int key;
   int x;
   int y;
 }Prince;
