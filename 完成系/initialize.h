@@ -9,7 +9,7 @@ typedef struct Tokimeki_dungeon{
 }Tokimeki_dungeon;
 
 typedef struct Princess_enemy{
-  char name[256];
+  char *name;
   int Hp;
   int Mp;
   int Atk;
@@ -19,7 +19,7 @@ typedef struct Princess_enemy{
 }Princess_enemy;
 
 typedef struct Prince{
-  char name[256];
+  char *name;
   int Hp;
   int Mp;
   int Atk;
@@ -40,7 +40,7 @@ typedef struct Princess_support{
 }Princess_support;
 
 typedef struct Weapon{
-  char name[256];
+  char *name;
   int Atk;
   int Def;
   int Skill;

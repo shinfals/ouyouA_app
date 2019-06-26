@@ -5,7 +5,7 @@
 
 int GetRandomInt(int min,int max);
 
-int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Item *item,Weapon *weapon){
+int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Item *item,Weapon *weapon,int EneNum){
   int count = 1;//ターン数
   int com;//コマンド選択肢
   int flag = 0;//0:戦闘続行,1:勝利,2:洗脳勝利,3:敗北,4:コマンド選択に戻る,5:洗脳失敗
@@ -15,12 +15,12 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
   int e_damage;//敵から受けるダメージ
   int e_damage_to_sup;//味方姫が敵から受けるダメージ
   float random_num;//敵から攻撃を受ける際のランダムな倍率を保存
-  int e_max_hp = p_enemy->Hp;//敵の最大HP
+  int e_max_hp = p_enemy[EneNum].Hp;//敵の最大HP
   int prob;//確率用
   float pre;//GetRandomInt()を起動した後に入れる
   srand((unsigned int)time(NULL));//乱数のシード初期化
   system("cls");
-  if(prince->Spd > p_enemy->Spd){//先攻の場合の処理
+  if(prince->Spd > p_enemy[EneNum].Spd){//先攻の場合の処理
     pre = (float)(GetRandomInt(750,1250))/1000.0;//乱数生成を起動
     printf("先攻です\n");
     for(;;){
@@ -30,8 +30,10 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       if(p_support->Hp > 0){
         printf("味方姫|ステータス  :  HP:%d | ATK:%d | DEF%d\n",p_support->Hp,p_support->Atk,p_support->Def);
       }
-      printf("敵姫|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF%d\n",p_enemy->name,p_enemy->Hp,p_enemy->Mp,p_enemy->Atk,p_enemy->Def);
-      printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
+	  system("pause");
+      printf("敵姫|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF%d\n",p_enemy[EneNum].name,p_enemy[EneNum].Hp,p_enemy[EneNum].Mp,p_enemy[EneNum].Atk,p_enemy[EneNum].Def);
+      system("pause");
+	  printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
       scanf("%d",&com);
@@ -40,13 +42,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 1://攻撃
           //主人公の攻撃
           random_num = (float)(GetRandomInt(750,1250))/1000.0;
-          damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy->Def);
+          damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
           if(damage <= 0){
             printf("主人公:敵にダメージを与えられませんでした\n");
           }else{
-            p_enemy->Hp -= damage;
+            p_enemy[EneNum].Hp -= damage;
           }
-          if(p_enemy->Hp <= 0){
+          if(p_enemy[EneNum].Hp <= 0){
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
@@ -54,13 +56,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
             random_num = (float)(GetRandomInt(750,1250))/1000.0;
-            damage = (int)((p_support->Atk * random_num) - p_enemy->Def);
+            damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
             if(damage <= 0){
               printf("味方姫:敵にダメージを与えられませんでした\n");
             }else{
-              p_enemy->Hp -= damage;
+              p_enemy[EneNum].Hp -= damage;
             }
-            if(p_enemy->Hp <= 0 && flag == 0){
+            if(p_enemy[EneNum].Hp <= 0 && flag == 0){
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
@@ -74,9 +76,9 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             char name_skill_2[256] = "レーザービーム";
             switch(prince->Skill){
               case 0://スラッシュ
-                damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy->Def);
-                p_enemy->Hp -= damage;
-                if(p_enemy->Hp <= 0){
+                damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy[EneNum].Def);
+                p_enemy[EneNum].Hp -= damage;
+                if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -87,8 +89,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 break;
               case 1://レーザービーム
                 damage = 300;
-                p_enemy->Hp -= damage;
-                if(p_enemy->Hp <= 0){
+                p_enemy[EneNum].Hp -= damage;
+                if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -105,8 +107,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 3://武器スキル
           if(weapon->Skill != 0){
             damage = 1500;
-            p_enemy->Hp -= damage;
-            if(p_enemy->Hp <= 0){
+            p_enemy[EneNum].Hp -= damage;
+            if(p_enemy[EneNum].Hp <= 0){
               printf("勝利しました\n");
               flag = 1;
             }else{
@@ -149,7 +151,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 5://洗脳
           prob = GetRandomInt(1,10);
           for(int i = 1; i < 11; i++){
-            if((e_max_hp/10)*i >= p_enemy->Hp){
+            if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
               switch(i){
                 case 1://100%
                   flag = 2;
@@ -228,8 +230,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
       if(flag == 0 || flag == 5){
         random_num = (float)(GetRandomInt(750,1250))/1000.0;
-        e_damage = (int)((p_enemy->Atk * random_num) - (prince->Def + weapon->Def));
-        e_damage_to_sup = (int)((p_enemy->Atk * random_num) - p_support->Def);
+        e_damage = (int)((p_enemy[EneNum].Atk * random_num) - (prince->Def + weapon->Def));
+        e_damage_to_sup = (int)((p_enemy[EneNum].Atk * random_num) - p_support->Def);
         atk_flag = GetRandomInt(0,1);
         if(atk_flag == 0 || p_support->Hp <= 0){//主人公or味方姫どちらに攻撃するか？
           if(e_damage <= 0){//ダメージが0を下回った場合の処理
@@ -263,14 +265,14 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         count++;
       }
     }
-  }else if(prince->Spd <= p_enemy->Spd){//後攻の場合の処理
+  }else if(prince->Spd <= p_enemy[EneNum].Spd){//後攻の場合の処理
     pre = (float)(GetRandomInt(750,1250))/1000.0;//乱数生成を起動
     printf("後攻です\n");
     for(;;){
       if(flag != 4){
         random_num = (float)(GetRandomInt(750,1250))/1000.0;
-        e_damage = (int)((p_enemy->Atk * random_num) - (prince->Def + weapon->Def));
-        e_damage_to_sup = (int)((p_enemy->Atk * random_num) - p_support->Def);
+        e_damage = (int)((p_enemy[EneNum].Atk * random_num) - (prince->Def + weapon->Def));
+        e_damage_to_sup = (int)((p_enemy[EneNum].Atk * random_num) - p_support->Def);
         atk_flag = GetRandomInt(0,1);
         if(atk_flag == 0 || p_support->Hp <= 0){//主人公or味方姫どちらに攻撃するか？
           if(e_damage <= 0){//ダメージが0を下回った場合の処理
@@ -309,7 +311,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       if(p_support->Hp > 0){
         printf("味方姫|ステータス  :  HP:%d | ATK:%d | DEF%d\n",p_support->Hp,p_support->Atk,p_support->Def);
       }
-      printf("敵姫|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF%d\n",p_enemy->name,p_enemy->Hp,p_enemy->Mp,p_enemy->Atk,p_enemy->Def);
+      printf("敵姫|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF%d\n",p_enemy[EneNum].name,p_enemy[EneNum].Hp,p_enemy[EneNum].Mp,p_enemy[EneNum].Atk,p_enemy[EneNum].Def);
       printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
@@ -319,13 +321,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 1://攻撃
           //主人公の攻撃
           random_num = (float)(GetRandomInt(750,1250))/1000.0;
-          damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy->Def);
+          damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
           if(damage <= 0){
             printf("主人公:敵にダメージを与えられませんでした\n");
           }else{
-            p_enemy->Hp -= damage;
+            p_enemy[EneNum].Hp -= damage;
           }
-          if(p_enemy->Hp <= 0){
+          if(p_enemy[EneNum].Hp <= 0){
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
@@ -333,13 +335,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
             random_num = (float)(GetRandomInt(750,1250))/1000.0;
-            damage = (int)((p_support->Atk * random_num) - p_enemy->Def);
+            damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
             if(damage <= 0){
               printf("味方姫:敵にダメージを与えられませんでした\n");
             }else{
-              p_enemy->Hp -= damage;
+              p_enemy[EneNum].Hp -= damage;
             }
-            if(p_enemy->Hp <= 0 && flag == 0){
+            if(p_enemy[EneNum].Hp <= 0 && flag == 0){
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
@@ -353,9 +355,9 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             char name_skill_2[256] = "レーザービーム";
             switch(prince->Skill){
               case 0://スラッシュ
-                damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy->Def);
-                p_enemy->Hp -= damage;
-                if(p_enemy->Hp <= 0){
+                damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy[EneNum].Def);
+                p_enemy[EneNum].Hp -= damage;
+                if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -366,8 +368,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 break;
               case 1://レーザービーム
                 damage = 300;
-                p_enemy->Hp -= damage;
-                if(p_enemy->Hp <= 0){
+                p_enemy[EneNum].Hp -= damage;
+                if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -384,8 +386,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 3://武器スキル
           if(weapon->Skill != 0){
             damage = 1500;
-            p_enemy->Hp -= damage;
-            if(p_enemy->Hp <= 0){
+            p_enemy[EneNum].Hp -= damage;
+            if(p_enemy[EneNum].Hp <= 0){
               printf("勝利しました\n");
               flag = 1;
             }else{
@@ -428,7 +430,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         case 5://洗脳
           prob = GetRandomInt(1,10);
           for(int i = 1; i < 11; i++){
-            if((e_max_hp/10)*i >= p_enemy->Hp){
+            if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
               switch(i){
                 case 1://100%
                   flag = 2;

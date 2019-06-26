@@ -14,4 +14,4 @@ void char_initialize(Prince *pPri);
 void Item_initialize(Weapon *pWep,Item *pItem);
 void enemy_char_initialize(Princess_enemy *pPriE,Princess_support *pPriS);
 int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Princess_support *prince_support,Item *item,Weapon *weapon);
-int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Item *item,Weapon *weapon);
+int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Item *item,Weapon *weapon,int EneNum);

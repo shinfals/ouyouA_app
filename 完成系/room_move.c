@@ -60,6 +60,7 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
 						printf("進めません\n");
 					}else{
 						prince->y--;
+						return;
 					}
 				}else{
 					prince->y--;
@@ -75,6 +76,7 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
 						printf("進めません\n");
 					}else{
 						prince->x--;
+						return;
 					}
 				}else{
 					prince->x--;
@@ -90,6 +92,7 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
 						printf("進めません\n");
 					}else{
 						prince->y++;
+						return;
 					}
 				}else{
 					prince->y++;
@@ -105,6 +108,7 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
 						printf("進めません\n");
 					}else{
 						prince->x++;
+						return;
 					}
 				}else{
 					prince->x++;

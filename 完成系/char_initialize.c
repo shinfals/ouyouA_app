@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "func.h"
 void char_initialize(Prince *pPri){
-	pPri->name[256]="Prince";
+	pPri->name="Prince";
 	pPri->Hp=1000;
 	pPri->Mp=1000;
 	pPri->Atk=500;

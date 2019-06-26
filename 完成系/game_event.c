@@ -2,19 +2,18 @@
 #include "func.h"
 
 int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Princess_support *prince_support,Item *item,Weapon *weapon){
-	int ResCom,ItemGet;
+	int ResCom,ItemGet,EneNum;
 	char cmnd;
-	if(p[prince->x][prince->y].PrincessEnemyNum >0){
-		
-		ResCom=combat(prince,&p_enemy[p[prince->x][prince->y].PrincessEnemyNum-1],prince_support,item,weapon);
-		p[prince->x][prince->y].PrincessEnemyNum=0;
-		if(p[prince->x][prince->y].PrincessEnemyNum == 8){
+	EneNum=p[prince->x][prince->y].PrincessEnemyNum;
+	if(EneNum > 0){
+		ResCom=combat(prince,p_enemy,prince_support,item,weapon,EneNum-1);
+		if(EneNum == 8 && ResCom == 1){
 			return 3;
 		}
 		
 		switch(ResCom){
 			case 1:
-				if(p[prince->x][prince->y].PrincessEnemyNum > 4 ){
+				if(EneNum > 4 ){
 					printf("鍵を拾った!\n");
 					prince->key++;
 					if(prince->key == 2){
@@ -25,9 +24,10 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				p[prince->x][prince->y].PrincessEnemyNum=0;
 				break;
 			case 2:
-				prince_support->Hp=p_support[p[prince->x][prince->y].PrincessEnemyNum].Hp;
-				prince_support->Atk=p_support[p[prince->x][prince->y].PrincessEnemyNum].Atk;
-				prince_support->Def=p_support[p[prince->x][prince->y].PrincessEnemyNum].Def;
+				prince_support->Hp=p_support[EneNum].Hp;
+				prince_support->Atk=p_support[EneNum].Atk;
+				prince_support->Def=p_support[EneNum].Def;
+				p[prince->x][prince->y].PrincessEnemyNum=0;
 				break;
 			case 3:
 				gameEnd();

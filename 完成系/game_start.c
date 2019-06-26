@@ -8,6 +8,7 @@ void gameStart(){
 		printf(u8"１：ゲームルール表示\n");
 		printf(u8"２：ゲームスタート\n");
 		printf(u8"上記の中から数字を選択してください：");
+		fflush(stdin);
 		scanf("%d",&s);
 		if(s == 1){
 			// system("clear");
