@@ -30,9 +30,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       if(p_support->Hp > 0){
         printf("味方姫|ステータス  :  HP:%d | ATK:%d | DEF%d\n",p_support->Hp,p_support->Atk,p_support->Def);
       }
-	  system("pause");
       printf("敵姫|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF%d\n",p_enemy[EneNum].name,p_enemy[EneNum].Hp,p_enemy[EneNum].Mp,p_enemy[EneNum].Atk,p_enemy[EneNum].Def);
-      system("pause");
 	  printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
@@ -241,6 +239,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           if(prince->Hp <= 0){
             printf("敗北しました\n");
+			
             flag = 3;
           }else if(e_damage > 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
@@ -514,6 +513,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
         }
       }
+	system("pause");
   return flag;
 }
 

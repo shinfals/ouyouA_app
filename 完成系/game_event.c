@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include "func.h"
-
+#include <stdlib.h>
+#include <time.h>
 int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Princess_support *prince_support,Item *item,Weapon *weapon){
 	int ResCom,ItemGet,EneNum;
 	char cmnd;
+	srand((unsigned)time(NULL));
 	EneNum=p[prince->x][prince->y].PrincessEnemyNum;
 	if(EneNum > 0){
+		printf("戦闘です");
+		system("pause");
 		ResCom=combat(prince,p_enemy,prince_support,item,weapon,EneNum-1);
 		if(EneNum == 8 && ResCom == 1){
 			return 3;
@@ -13,7 +17,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 		
 		switch(ResCom){
 			case 1:
-				if(EneNum > 4 ){
+				if(EneNum > 3 ){
 					printf("鍵を拾った!\n");
 					prince->key++;
 					if(prince->key == 2){
@@ -38,7 +42,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				return 1;
 				break;
 		}
-		ItemGet=prince->Hp%10;
+		ItemGet=rand()%10;
 		if(ItemGet <7){
 			if(ItemGet <2){
 				printf("ポーションをゲットしました：HP回復量%d,SP回復量%d\n",item[1].Hp,item[1].Mp);
@@ -120,6 +124,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 					printf("鍵を使って宝箱を開けた！中身は銅の剣でした\n");
 					if(prince->wep < 1){
 						printf("装備しました!\n");
+						prince->wep=1;
 					}else{
 						printf("必要なかったので捨てました\n");
 					}
@@ -128,6 +133,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 					printf("鍵を使って宝箱を開けた！中身は鉄の剣でした\n");
 					if(prince->wep < 2){
 						printf("装備しました!\n");
+						prince->wep=2;
 					}else{
 						printf("必要なかったので捨てました\n");
 					}
@@ -136,6 +142,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 					printf("鍵を使って宝箱を開けた！中身は勇者の剣でした\n");
 					if(prince->wep < 3){
 						printf("装備しました!\n");
+						prince->wep=3;
 					}else{
 						printf("必要なかったので捨てました\n");
 					}
@@ -147,10 +154,38 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 					printf("TresureChestNum error\n");
 					break;
 			}
+			p[prince->x][prince->y].TresureChest=0;
 		}else{
 			printf("鍵がないため開けられませんでした...\n");
 		}
 		system("pause");
 	}
+	if(prince->item != 0){
+        char ans;
+            if((item+prince->item)->Hp == 0){
+              printf("MPを%d回復するポーションを保持しています。使用しますか？(y):",(item+prince->item)->Mp);
+			  fflush(stdin);
+              scanf("%c",&ans);
+              if(ans == 'y'){
+                prince->Mp += (item+prince->item)->Mp;
+                printf("MPを%d回復しました\n",(item+prince->item)->Mp);
+                prince->item = 0;
+              }else{
+                printf("使用しませんでした\n");
+              }
+            }else{
+              printf("HPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Hp);
+			  fflush(stdin);
+              scanf("%c",&ans);
+              if(ans == 'y'){
+                prince->Hp += (item+prince->item)->Hp;
+                printf("HPを%d回復しました\n",(item+prince->item)->Hp);
+                prince->item = 0;
+              }else{
+                printf("使用しませんでした\n");
+              }
+            }
+			system("pause");
+        }	
 	return 0;
 }

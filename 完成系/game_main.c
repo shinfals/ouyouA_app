@@ -27,10 +27,11 @@ void gameMain(){
 		room_move(&prince,&Tokimeki,&map);//ゲーム本体の関数
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
 		if(end_flag==1){
-			printf("geme over\n");
+			system("pause");
 			return ;
 		}else if(end_flag==3){
 			printf("ゲームクリア!\n");
+			system("pause");
 			return ;
 		}
 	}

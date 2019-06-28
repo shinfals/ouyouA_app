@@ -8,6 +8,7 @@
    int at=0;//モブATKの入れ物
    int df=0;//モブDEFの入れ物
    int sp=0;//モブSPDの入れ物
+   srand((unsigned)time(NULL));
 
    hp=rand()%251+250;//モブのHP２５０〜５００でランダム
    at=rand()%151+150;//モブのATK１５０〜３００でランダム
