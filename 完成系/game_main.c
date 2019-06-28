@@ -26,6 +26,7 @@ void gameMain(){
 	for(;;){
 		room_move(&prince,&Tokimeki,&map);//ゲーム本体の関数
 		printf("主人公|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF:%d\n",prince.name,prince.Hp,prince.Mp,prince.Atk,prince.Def);
+		//printf("所持装備:%s 所持アイテム:ポーションHP:%dMP:%d",weapon.name,item)
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
 		
 		if(end_flag==1){
