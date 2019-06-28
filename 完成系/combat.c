@@ -355,7 +355,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             switch(prince->Skill){
               case 0://スラッシュ
                 damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy[EneNum].Def);
-                p_enemy[EneNum].Hp -= damage;
+                p_enemy[EneNum].Hp -= damage*2;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
                   prince->Mp--;
@@ -366,7 +366,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 }
                 break;
               case 1://レーザービーム
-                damage = 300;
+                damage = 450;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("勝利しました\n");
@@ -383,8 +383,10 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           break;
         case 3://武器スキル
-          if(weapon->Skill != 0){
+          if(weapon[prince->wep].Skill != 0){
             damage = 1500;
+			printf("武器が壊れた!\n");
+			prince->wep=0;
             p_enemy[EneNum].Hp -= damage;
             if(p_enemy[EneNum].Hp <= 0){
               printf("勝利しました\n");

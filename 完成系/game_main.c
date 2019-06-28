@@ -3,7 +3,7 @@
 
 void gameMain(){
 	Tokimeki_dungeon Tokimeki[MAP_WIDTH][MAP_HEIGHT];
-	Princess_enemy PEnemy[9];
+	Princess_enemy PEnemy[8];
 	Princess_support PSupport[7];
 	Princess_support Prince_support={0,0,0};
 	Prince prince;

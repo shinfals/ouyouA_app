@@ -8,6 +8,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 	srand((unsigned)time(NULL));
 	EneNum=p[prince->x][prince->y].PrincessEnemyNum;
 	if(EneNum > 0){
+		
 		printf("戦闘です");
 		system("pause");
 		ResCom=combat(prince,p_enemy,prince_support,item,weapon,EneNum-1);
@@ -32,6 +33,14 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				prince_support->Atk=p_support[EneNum].Atk;
 				prince_support->Def=p_support[EneNum].Def;
 				p[prince->x][prince->y].PrincessEnemyNum=0;
+				if(EneNum > 3 ){
+					printf("鍵を拾った!\n");
+					prince->key++;
+					if(prince->key == 2){
+						printf("二本のカギが合体してﾎﾞｽ部屋のカギになった!\n");
+						printf("※宝箱はそのまま開けられます\n");
+					}
+				}
 				break;
 			case 3:
 				gameEnd();
@@ -114,7 +123,9 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				}
 			}
 			system("pause");
-		}
+		}else{
+			printf("アイテムはドロップしませんでした...\n");
+			system("pause");
 	}
 	if(p[prince->x][prince->y].TresureChest >0){
 		printf("宝箱を見つけた!\n");
@@ -186,6 +197,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
               }
             }
 			system("pause");
-        }	
+    }	
 	return 0;
+	}
 }
