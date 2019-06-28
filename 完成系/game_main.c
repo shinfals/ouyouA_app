@@ -25,7 +25,9 @@ void gameMain(){
 	PEnemy[0].name="フィーナ姫";
 	for(;;){
 		room_move(&prince,&Tokimeki,&map);//ゲーム本体の関数
+		printf("主人公|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF:%d\n",prince.name,prince.Hp,prince.Mp,prince.Atk,prince.Def);
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
+		
 		if(end_flag==1){
 			system("pause");
 			return ;

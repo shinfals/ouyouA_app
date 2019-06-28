@@ -7,8 +7,8 @@ void char_initialize(Prince *pPri){
 	pPri->name="Prince";
 	pPri->Hp=rand()%701+500;
 	pPri->Mp=rand()%6+5;
-	pPri->Atk=rand()%151+150;
-	pPri->Def=rand()%151+150;
+	pPri->Atk=rand()%151+70;
+	pPri->Def=rand()%151+50;
 	pPri->Spd=rand()%5+1;
 	pPri->Skill=rand()%2;
 	pPri->item=0;
