@@ -238,8 +238,9 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             prince->Hp -= e_damage;
           }
           if(prince->Hp <= 0){
+            printf("主人公:敵から%dのダメージを受けました\n",e_damage);
             printf("敗北しました\n");
-			
+
             flag = 3;
           }else if(e_damage > 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
@@ -251,6 +252,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             p_support->Hp -= e_damage_to_sup;
           }
           if(p_support->Hp <= 0 && sup_flag == 0){
+            printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
             printf("味方姫:倒されました\n");
             sup_flag = 1;
           }else if(e_damage_to_sup > 0){
@@ -280,6 +282,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             prince->Hp -= e_damage;
           }
           if(prince->Hp <= 0){
+            printf("主人公:敵から%dのダメージを受けました\n",e_damage);
             printf("敗北しました\n");
             flag = 3;
           }else if(e_damage > 0){
@@ -292,6 +295,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             p_support->Hp -= e_damage_to_sup;
           }
           if(p_support->Hp <= 0 && sup_flag == 0){
+            printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
             printf("味方姫:倒されました\n");
             sup_flag = 1;
           }else if(e_damage_to_sup > 0){

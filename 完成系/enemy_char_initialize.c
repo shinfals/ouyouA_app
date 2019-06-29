@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "func.h"
- 
+
  void enemy_char_initialize(Princess_enemy *pPriE,Princess_support *pPriS){
    int hp=0;//モブHPの入れ物
    int at=0;//モブATKの入れ物
@@ -22,7 +22,7 @@
    pPriE[0].Spd=3;//モブ１のSPD
    pPriE[0].Skill=0;
    pPriE[0].Mp=0;
-   
+
 
    hp=rand()%251+250;//モブのHP２５０〜５００でランダム
    at=rand()%151+150;//モブのATK１５０〜３００でランダム
@@ -42,7 +42,7 @@
    at=rand()%151+150;//モブのATK１５０〜３００でランダム
    df=rand()%31+20;//モブのDEF２０〜５０でランダム
    sp=rand()%5+1;//モブのSPD１〜５でランダム
-	
+
    pPriE[2].name="亀姫";//モブ３の名前
    pPriE[2].Hp=hp;//モブ３のHP
    pPriE[2].Atk=at;//モブ３のATK
@@ -56,7 +56,7 @@
    at=rand()%151+150;//モブのATK１５０〜３００でランダム
    df=rand()%31+20;//モブのDEF２０〜５０でランダム
    sp=rand()%5+1;//モブのSPD１〜５でランダム
-	
+
    pPriE[3].name="星姫";//モブ４の名前
    pPriE[3].Hp=hp;//モブ４のHP
    pPriE[3].Atk=at;//モブ４のATK
@@ -65,19 +65,19 @@
    pPriE[3].Mp=0;
    pPriE[3].Skill=0;
 
-	
+
    pPriS[0].Hp=0;//味方がいない場合に使う
    pPriS[0].Atk=0;//
    pPriS[0].Def=0;//
-	
+
    pPriS[1].Hp=pPriE[0].Hp;//モブ１を仲間にした時
    pPriS[1].Atk=pPriE[0].Atk;//数値はモブ１から引用
    pPriS[1].Def=pPriE[0].Def;//
-	
+
    pPriS[2].Hp=pPriE[1].Hp;//モブ２を仲間にした時
    pPriS[2].Atk=pPriE[1].Atk;//数値はモブ２から引用
    pPriS[2].Def=pPriE[1].Def;//
-	
+
    pPriS[3].Hp=pPriE[2].Hp;//モブ３を仲間にした時
    pPriS[3].Atk=pPriE[2].Atk;//数値はモブ３から引用
    pPriS[3].Def=pPriE[2].Def;//
@@ -108,7 +108,7 @@
    Mat=rand()%151+200;//中ボスのATK２００〜３５０でランダム
    Mdf=rand()%41+35;//中ボスのDEF３５〜７５でランダム
    Msp=rand()%5+1;//中ボスのSPD１〜５でランダム
-	
+
    pPriE[5].name="桃姫";//中ボス２の名前
    pPriE[5].Hp=Mhp;//中ボス２のHP
    pPriE[5].Mp=3;//中ボス２のMP
@@ -121,7 +121,7 @@
    Mat=rand()%151+200;//中ボスのATK２００〜３５０でランダム
    Mdf=rand()%41+35;//中ボスのDEF３５〜７５でランダム
    Msp=rand()%5+1;//中ボスのSPD１〜５でランダム
-	
+
    pPriE[6].name="雪姫";//中ボス３の名前
    pPriE[6].Hp=Mhp;//中ボス３のHP
    pPriE[6].Mp=3;//中ボス３のMP
@@ -129,7 +129,7 @@
    pPriE[6].Def=Mdf;//中ボス３のDEF
    pPriE[6].Spd=Msp;//中ボス３のSPD
    pPriE[6].Skill=3;//中ボス３のスキル
-	
+
    pPriS[5].Hp=pPriE[4].Hp;//中ボス１を仲間にした時
    pPriS[5].Atk=pPriE[4].Atk;//数値は中ボス１を引用
    pPriS[5].Def=pPriE[4].Def;//
@@ -149,5 +149,5 @@
    pPriE[7].Def=0;//ラスボスのDEF
    pPriE[7].Spd=5;//ラスボスのSPD
    pPriE[7].Skill=4;//ラスボスのスキル
-   
+
 }
