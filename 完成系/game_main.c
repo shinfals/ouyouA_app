@@ -22,15 +22,12 @@ void gameMain(){
 	Item_initialize(&weapon,&item);
 	int end_flag = end_initialize();//終了条件初期化
 	enemy_char_initialize(&PEnemy,&PSupport);
-	//PEnemy[0].name="フィーナ姫";
-	printf("%s",PEnemy[0].name);
-   system("pause");
 	for(;;){
 		room_move(&prince,&Tokimeki,&map);//ゲーム本体の関数
 		printf("主人公|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF:%d\n",prince.name,prince.Hp,prince.Mp,prince.Atk,prince.Def);
 		//printf("所持装備:%s 所持アイテム:ポーションHP:%dMP:%d",weapon.name,item)
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
-		
+
 		if(end_flag==1){
 			system("pause");
 			return ;
@@ -40,5 +37,5 @@ void gameMain(){
 			return ;
 		}
 	}
-	
+
 }
