@@ -160,56 +160,65 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   case 2://90%
                     if(prob != i){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 3://80%
                     if(prob != 1 && prob != 9){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 4://70%
                     if(prob != 1 && prob != 3 && prob != 8){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 5://60%
                     if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 6://50%
                     if(prob%2 == 0){
                       flag = 0;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 7://40%
                     if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 8://30%
                     if(prob == 3 || prob == 6 || prob == 8){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 9://20%
                     if(prob == 6 || prob == 9){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 10://10%
                     if(prob == i){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   }
                 }
@@ -454,56 +463,65 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   case 2://90%
                     if(prob != i){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 3://80%
                     if(prob != 1 && prob != 9){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 4://70%
                     if(prob != 1 && prob != 3 && prob != 8){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 5://60%
                     if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 6://50%
                     if(prob%2 == 0){
                       flag = 0;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 7://40%
                     if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 8://30%
                     if(prob == 3 || prob == 6 || prob == 8){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 9://20%
                     if(prob == 6 || prob == 9){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   case 10://10%
                     if(prob == i){
                       flag = 2;
+                    }else{
+                      flag = 5;
                     }
-                    flag = 5;
                     break;
                   }
                 }
