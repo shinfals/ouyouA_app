@@ -99,7 +99,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 }
                 break;
               case 1://レーザービーム
-                damage = 300;
+                damage = 450;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
