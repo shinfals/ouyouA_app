@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
+#include <windows.h>
 
 int GetRandomInt(int min,int max);
 
@@ -35,7 +36,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
 	  printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
-      com = _getch();
+      com = getch();
       system("cls");
       switch(com){
         case 1://攻撃
@@ -361,7 +362,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
-      com = _getch();
+      com = getch();
       system("cls");
       switch(com){
         case 1://攻撃
