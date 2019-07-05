@@ -1,4 +1,4 @@
-#include "func.h"
+﻿#include "func.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -99,7 +99,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 }
                 break;
               case 1://レーザービーム
-                damage = 450;
+                damage = 500;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
@@ -435,7 +435,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 }
                 break;
               case 1://レーザービーム
-                damage = 450;
+                damage = 500;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
