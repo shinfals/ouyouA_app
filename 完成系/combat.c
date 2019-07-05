@@ -119,7 +119,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           break;
         case '3'://武器スキル
-          if(weapon->Skill != 0){
+          if(weapon[prince->wep].Skill != 0){
             damage = 1500;
             printf("武器が壊れた!\n");
             Sleep(300);
