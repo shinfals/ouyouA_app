@@ -2,6 +2,9 @@
 #include "func.h"
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
+#include <conio.h>
+#include <windows.h>
 int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Princess_support *prince_support,Item *item,Weapon *weapon){
 	int ResCom,ItemGet,EneNum;
 	char cmnd;
@@ -10,7 +13,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 	if(EneNum > 0){
 		
 		printf("戦闘です");
-		system("pause");
+		
 		ResCom=combat(prince,p_enemy,prince_support,item,weapon,EneNum-1);
 		if(EneNum == 8 && ResCom == 1){
 			return 3;
@@ -20,6 +23,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 			case 1:
 				if(EneNum > 3 ){
 					printf("鍵を拾った!\n");
+					Sleep(500);
 					prince->key++;
 					if(prince->key == 2){
 						printf("二本のカギが合体してﾎﾞｽ部屋のカギになった!\n");
@@ -35,6 +39,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				p[prince->x][prince->y].PrincessEnemyNum=0;
 				if(EneNum > 3 ){
 					printf("鍵を拾った!\n");
+					Sleep(500);
 					prince->key++;
 					if(prince->key == 2){
 						printf("二本のカギが合体してﾎﾞｽ部屋のカギになった!\n");
@@ -47,7 +52,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				return 1;
 			default :
 				printf("error combat\n");
-				system("pause");
+				sleep(5);
 				return 1;
 				break;
 		}
@@ -58,7 +63,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				printf("アイテムを拾いますか？y/n※現在所持している場合は交換されます.\n");
 				for(;;){
 					fflush(stdin);
-					scanf("%c",&cmnd);
+					cmnd=_getch();
 					if(cmnd=='y'){
 						printf("アイテムを拾いました\n");
 						prince->item=1;
@@ -75,7 +80,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				printf("アイテムを拾いますか？y/n※現在所持している場合は交換されます.\n");
 				for(;;){
 					fflush(stdin);
-					scanf("%c",&cmnd);
+					cmnd=_getch();
 					if(cmnd=='y'){
 						printf("アイテムを拾いました\n");
 						prince->item=2;
@@ -92,7 +97,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				printf("アイテムを拾いますか？y/n※現在所持している場合は交換されます.\n");
 				for(;;){
 					fflush(stdin);
-					scanf("%c",&cmnd);
+					cmnd=_getch();
 					if(cmnd=='y'){
 						printf("アイテムを拾いました\n");
 						prince->item=3;
@@ -109,7 +114,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 				printf("アイテムを拾いますか？y/n※現在所持している場合は交換されます.\n");
 				for(;;){
 					fflush(stdin);
-					scanf("%c",&cmnd);
+					cmnd=_getch();
 					if(cmnd=='y'){
 						printf("アイテムを拾いました\n");
 						prince->item=4;
@@ -122,10 +127,10 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 					}
 				}
 			}
-			system("pause");
+			Sleep(500);
 		}else{
 			printf("アイテムはドロップしませんでした...\n");
-			system("pause");
+			Sleep(500);
 	}
 	if(p[prince->x][prince->y].TresureChest >0){
 		printf("宝箱を見つけた!\n");
@@ -169,25 +174,27 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 		}else{
 			printf("鍵がないため開けられませんでした...\n");
 		}
-		system("pause");
+		Sleep(500);
 	}
 	if(prince->item != 0){
         char ans;
             if((item+prince->item)->Hp == 0){
-              printf("MPを%d回復するポーションを保持しています。使用しますか？(y):",(item+prince->item)->Mp);
+              printf("MPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Mp);
 			  fflush(stdin);
-              scanf("%c",&ans);
+              ans=_getch();
               if(ans == 'y'){
                 prince->Mp += (item+prince->item)->Mp;
                 printf("MPを%d回復しました\n",(item+prince->item)->Mp);
                 prince->item = 0;
-              }else{
+              }else if {
+				  
+			  }else{
                 printf("使用しませんでした\n");
               }
             }else{
               printf("HPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Hp);
 			  fflush(stdin);
-              scanf("%c",&ans);
+              ans=_getch();
               if(ans == 'y'){
                 prince->Hp += (item+prince->item)->Hp;
                 printf("HPを%d回復しました\n",(item+prince->item)->Hp);
@@ -196,7 +203,7 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
                 printf("使用しませんでした\n");
               }
             }
-			system("pause");
+			Sleep(500);
     }	
 	return 0;
 	}

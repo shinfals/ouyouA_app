@@ -2,6 +2,7 @@
 #include "func.h"
 #include <unistd.h>
 #include <conio.h>
+#include <windows.h>
 void gameMain(){
 	Tokimeki_dungeon Tokimeki[MAP_WIDTH][MAP_HEIGHT];
 	Princess_enemy PEnemy[8];
