@@ -7,8 +7,8 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
 
     for(;;){
 		char dir;
-		sleep(1);
 		printf("移動する方向をWASDで選択してください\n");
+		fflush(stdin);
 		dir=_getch();
 		switch(dir){
 			case 'w':
