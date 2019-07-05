@@ -15,7 +15,7 @@
    df=rand()%31+20;//モブのDEF２０〜５０でランダム
    sp=rand()%5+1;//モブのSPD１〜５でランダム
 
-   pPriE[0].name="Princess";//モブ１の名前
+   pPriE[0].name="フィーナ姫";//モブ１の名前
    pPriE[0].Hp=800;//モブ１のHP
    pPriE[0].Atk=120;//モブ１のATK
    pPriE[0].Def=70;//モブ１のDEF
