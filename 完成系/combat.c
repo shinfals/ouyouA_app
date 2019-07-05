@@ -45,36 +45,36 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
           if(damage <= 0){
             printf("主人公:敵にダメージを与えられませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             p_enemy[EneNum].Hp -= damage;
           }
           if(p_enemy[EneNum].Hp <= 0){
             printf("主人公:敵に%dのダメージを与えました\n",damage);
-            Sleep(500);
+            Sleep(300);
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
             printf("主人公:敵に%dのダメージを与えました\n",damage);
-            Sleep(500);
+            Sleep(300);
           }
           if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
             random_num = (float)(GetRandomInt(750,1250))/1000.0;
             damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
             if(damage <= 0){
               printf("味方姫:敵にダメージを与えられませんでした\n");
-              Sleep(500);
+              Sleep(300);
             }else{
               p_enemy[EneNum].Hp -= damage;
             }
             if(p_enemy[EneNum].Hp <= 0 && flag == 0){
               printf("味方姫:敵に%dのダメージを与えました\n",damage);
-              Sleep(500);
+              Sleep(300);
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
               printf("味方姫:敵に%dのダメージを与えました\n",damage);
-              Sleep(500);
+              Sleep(300);
             }
           }
           break;
@@ -88,13 +88,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
-                  Sleep(500);
+                  Sleep(300);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
                 }else{
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
-                  Sleep(500);
+                  Sleep(300);
                   prince->Mp--;
                 }
                 break;
@@ -103,13 +103,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
-                  Sleep(500);
+                  Sleep(300);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
                 }else{
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
-                  Sleep(500);
+                  Sleep(300);
                   prince->Mp--;
                 }
                 break;
@@ -122,16 +122,16 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           if(weapon->Skill != 0){
             damage = 1500;
             printf("武器が壊れた!\n");
-            Sleep(500);
+            Sleep(300);
             p_enemy[EneNum].Hp -= damage;
             if(p_enemy[EneNum].Hp <= 0){
               printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
-              Sleep(500);
+              Sleep(300);
               printf("勝利しました\n");
               flag = 1;
             }else{
               printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
-              Sleep(500);
+              Sleep(300);
             }
             prince->wep = 0;
           }else{
@@ -148,7 +148,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               if(ans == 'y'){
                 prince->Mp += (item+prince->item)->Mp;
                 printf("MPを%d回復しました\n",(item+prince->item)->Mp);
-                Sleep(500);
+                Sleep(300);
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
@@ -160,7 +160,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               if(ans == 'y'){
                 prince->Hp += (item+prince->item)->Hp;
                 printf("HPを%d回復しました\n",(item+prince->item)->Hp);
-                Sleep(500);
+                Sleep(300);
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
@@ -257,10 +257,10 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }else if(flag == 5){
               if(p_enemy->name == "極姫"){
                 printf("極姫は洗脳できません\n");
-                Sleep(500);
+                Sleep(300);
               }else{
                 printf("洗脳に失敗しました\n");
-                Sleep(500);
+                Sleep(300);
               }
             }
             break;
@@ -277,34 +277,34 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         if(atk_flag == 0 || p_support->Hp <= 0){//主人公or味方姫どちらに攻撃するか？
           if(e_damage <= 0){//ダメージが0を下回った場合の処理
             printf("主人公:ダメージを受けませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             prince->Hp -= e_damage;
           }
           if(prince->Hp <= 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
-            Sleep(500);
+            Sleep(300);
             printf("敗北しました\n");
             flag = 3;
           }else if(e_damage > 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
-            Sleep(500);
+            Sleep(300);
           }
         }else{
           if(e_damage_to_sup <= 0){//ダメージが0を下回った場合の処理
             printf("味方姫:ダメージを受けませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             p_support->Hp -= e_damage_to_sup;
           }
           if(p_support->Hp <= 0 && sup_flag == 0){
             printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
-            Sleep(500);
+            Sleep(300);
             printf("味方姫:倒されました\n");
             sup_flag = 1;
           }else if(e_damage_to_sup > 0){
             printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
-            Sleep(500);
+            Sleep(300);
           }
         }
       }
@@ -326,34 +326,34 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
         if(atk_flag == 0 || p_support->Hp <= 0){//主人公or味方姫どちらに攻撃するか？
           if(e_damage <= 0){//ダメージが0を下回った場合の処理
             printf("主人公:ダメージを受けませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             prince->Hp -= e_damage;
           }
           if(prince->Hp <= 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
-            Sleep(500);
+            Sleep(300);
             printf("敗北しました\n");
             flag = 3;
           }else if(e_damage > 0){
             printf("主人公:敵から%dのダメージを受けました\n",e_damage);
-            Sleep(500);
+            Sleep(300);
           }
         }else{
           if(e_damage_to_sup <= 0){//ダメージが0を下回った場合の処理
             printf("味方姫:ダメージを受けませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             p_support->Hp -= e_damage_to_sup;
           }
           if(p_support->Hp <= 0 && sup_flag == 0){
             printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
-            Sleep(500);
+            Sleep(300);
             printf("味方姫:倒されました\n");
             sup_flag = 1;
           }else if(e_damage_to_sup > 0){
             printf("味方姫:敵から%dのダメージを受けました\n",e_damage_to_sup);
-            Sleep(500);
+            Sleep(300);
           }
         }
       }
@@ -381,36 +381,36 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
           if(damage <= 0){
             printf("主人公:敵にダメージを与えられませんでした\n");
-            Sleep(500);
+            Sleep(300);
           }else{
             p_enemy[EneNum].Hp -= damage;
           }
           if(p_enemy[EneNum].Hp <= 0){
             printf("主人公:敵に%dのダメージを与えました\n",damage);
-            Sleep(500);
+            Sleep(300);
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
             printf("主人公:敵に%dのダメージを与えました\n",damage);
-            Sleep(500);
+            Sleep(300);
           }
           if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
             random_num = (float)(GetRandomInt(750,1250))/1000.0;
             damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
             if(damage <= 0){
               printf("味方姫:敵にダメージを与えられませんでした\n");
-              Sleep(500);
+              Sleep(300);
             }else{
               p_enemy[EneNum].Hp -= damage;
             }
             if(p_enemy[EneNum].Hp <= 0 && flag == 0){
               printf("味方姫:敵に%dのダメージを与えました\n",damage);
-              Sleep(500);
+              Sleep(300);
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
               printf("味方姫:敵に%dのダメージを与えました\n",damage);
-              Sleep(500);
+              Sleep(300);
             }
           }
           break;
@@ -424,13 +424,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 p_enemy[EneNum].Hp -= damage*2;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
-                  Sleep(500);
+                  Sleep(300);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
                 }else{
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
-                  Sleep(500);
+                  Sleep(300);
                   prince->Mp--;
                 }
                 break;
@@ -439,13 +439,13 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
-                  Sleep(500);
+                  Sleep(300);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
                 }else{
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
-                  Sleep(500);
+                  Sleep(300);
                   prince->Mp--;
                 }
                 break;
@@ -458,16 +458,16 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           if(weapon[prince->wep].Skill != 0){
             damage = 1500;
             printf("武器が壊れた!\n");
-            Sleep(500);
+            Sleep(300);
             p_enemy[EneNum].Hp -= damage;
             if(p_enemy[EneNum].Hp <= 0){
               printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
-              Sleep(500);
+              Sleep(300);
               printf("勝利しました\n");
               flag = 1;
             }else{
               printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
-              Sleep(500);
+              Sleep(300);
             }
             prince->wep = 0;
           }else{
@@ -484,7 +484,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               if(ans == 'y'){
                 prince->Mp += (item+prince->item)->Mp;
                 printf("MPを%d回復しました\n",(item+prince->item)->Mp);
-                Sleep(500);
+                Sleep(300);
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
@@ -496,7 +496,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               if(ans == 'y'){
                 prince->Hp += (item+prince->item)->Hp;
                 printf("HPを%d回復しました\n",(item+prince->item)->Hp);
-                Sleep(500);
+                Sleep(300);
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
@@ -593,10 +593,10 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }else if(flag == 5){
               if(p_enemy->name == "極姫"){
                 printf("極姫は洗脳できません\n");
-                Sleep(500);
+                Sleep(300);
               }else{
                 printf("洗脳に失敗しました\n");
-                Sleep(500);
+                Sleep(300);
               }
             }
             break;
