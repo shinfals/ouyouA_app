@@ -50,6 +50,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             p_enemy[EneNum].Hp -= damage;
           }
           if(p_enemy[EneNum].Hp <= 0){
+            printf("主人公:敵に%dのダメージを与えました\n",damage);
+            Sleep(500);
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
@@ -66,6 +68,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               p_enemy[EneNum].Hp -= damage;
             }
             if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+              printf("味方姫:敵に%dのダメージを与えました\n",damage);
+              Sleep(500);
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
@@ -83,6 +87,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy[EneNum].Def);
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
+                  printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
+                  Sleep(500);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -96,6 +102,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 damage = 300;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
+                  printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
+                  Sleep(500);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -117,6 +125,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             Sleep(500);
             p_enemy[EneNum].Hp -= damage;
             if(p_enemy[EneNum].Hp <= 0){
+              printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
+              Sleep(500);
               printf("勝利しました\n");
               flag = 1;
             }else{
@@ -376,6 +386,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             p_enemy[EneNum].Hp -= damage;
           }
           if(p_enemy[EneNum].Hp <= 0){
+            printf("主人公:敵に%dのダメージを与えました\n",damage);
+            Sleep(500);
             printf("勝利しました\n");
             flag = 1;
           }else if(damage > 0){
@@ -392,6 +404,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
               p_enemy[EneNum].Hp -= damage;
             }
             if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+              printf("味方姫:敵に%dのダメージを与えました\n",damage);
+              Sleep(500);
               printf("勝利しました\n");
               flag = 1;
             }else if(damage > 0){
@@ -409,6 +423,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * ((float)(GetRandomInt(1500,2500))/1000.0)) - p_enemy[EneNum].Def);
                 p_enemy[EneNum].Hp -= damage*2;
                 if(p_enemy[EneNum].Hp <= 0){
+                  printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
+                  Sleep(500);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -422,6 +438,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 damage = 450;
                 p_enemy[EneNum].Hp -= damage;
                 if(p_enemy[EneNum].Hp <= 0){
+                  printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
+                  Sleep(500);
                   printf("勝利しました\n");
                   prince->Mp--;
                   flag = 1;
@@ -443,6 +461,8 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             Sleep(500);
             p_enemy[EneNum].Hp -= damage;
             if(p_enemy[EneNum].Hp <= 0){
+              printf("%sのスキルを用いて%dのダメージを与えました\n",weapon->name,damage);
+              Sleep(500);
               printf("勝利しました\n");
               flag = 1;
             }else{
