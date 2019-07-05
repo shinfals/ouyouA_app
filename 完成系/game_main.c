@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "func.h"
-
+#include <unistd.h>
+#include <conio.h>
 void gameMain(){
 	Tokimeki_dungeon Tokimeki[MAP_WIDTH][MAP_HEIGHT];
 	Princess_enemy PEnemy[8];
@@ -23,17 +24,22 @@ void gameMain(){
 	int end_flag = end_initialize();//終了条件初期化
 	enemy_char_initialize(&PEnemy,&PSupport);
 	for(;;){
+		room_display(&prince,&Tokimeki,&map);
 		room_move(&prince,&Tokimeki,&map);//ゲーム本体の関数
-		printf("主人公|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF:%d\n",prince.name,prince.Hp,prince.Mp,prince.Atk,prince.Def);
-		//printf("所持装備:%s 所持アイテム:ポーションHP:%dMP:%d",weapon.name,item)
+		Sleep(500);
+		room_display(&prince,&Tokimeki,&map);
+		Sleep(500);
+		printf("\n主人公|ステータス  :  NAME:%s | HP:%d | MP:%d | ATK:%d | DEF:%d\n",prince.name,prince.Hp,prince.Mp,prince.Atk,prince.Def);
+		printf("所持装備:%s 所持アイテム:ポーションHP:%dMP:%d\n※ポーションHP0MP0の場合不所持\n",weapon[prince.wep].name,item[prince.item]);
+		sleep(1);
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
 
 		if(end_flag==1){
-			system("pause");
+			sleep(3);
 			return ;
 		}else if(end_flag==3){
 			printf("ゲームクリア!\n");
-			system("pause");
+			sleep(5);
 			return ;
 		}
 	}

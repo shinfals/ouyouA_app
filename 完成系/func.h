@@ -9,6 +9,7 @@ void game_rule();
 void game_end();
 int end_initialize();
 void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]);
+void room_display(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]);
 void tokimeki_Dungeon_Initialize(Tokimeki_dungeon (*p)[5]);
 void char_initialize(Prince *pPri);
 void Item_initialize(Weapon *pWep,Item *pItem);
