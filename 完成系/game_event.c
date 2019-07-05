@@ -187,9 +187,11 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
                 prince->Mp += (item+prince->item)->Mp;
                 printf("MPを%d回復しました\n",(item+prince->item)->Mp);
                 prince->item = 0;
+				Sleep(500);
 				break;
               }else if (ans == 'n'){
 				 printf("使用しませんでした\n");
+				 Sleep(500);
 				 break;
 			  }else{
                 printf("y/nで入力してください\n");
@@ -202,9 +204,11 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
                 prince->Hp += (item+prince->item)->Hp;
                 printf("HPを%d回復しました\n",(item+prince->item)->Hp);
                 prince->item = 0;
+				Sleep(500);
 				break;
               }else if (ans == 'n'){
 				 printf("使用しませんでした\n");
+				 Sleep(500);
 				 break;
 			  }else{
                 printf("y/nで入力してください\n");
