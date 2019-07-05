@@ -39,7 +39,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       com = _getch();
       system("cls");
       switch(com){
-        case 1://攻撃
+        case '1'://攻撃
           //主人公の攻撃
           random_num = (float)(GetRandomInt(750,1250))/1000.0;
           damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
@@ -74,7 +74,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }
           }
           break;
-        case 2://スキル
+        case '2'://スキル
           if(prince->Mp > 0){
             char name_skill_1[256] = "スラッシュ";
             char name_skill_2[256] = "レーザービーム";
@@ -110,7 +110,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             printf("MPが無いためスキルは使用できません\n");
           }
           break;
-        case 3://武器スキル
+        case '3'://武器スキル
           if(weapon->Skill != 0){
             damage = 1500;
             printf("武器が壊れた!\n");
@@ -129,7 +129,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             flag = 4;
           }
           break;
-        case 4://アイテム
+        case '4'://アイテム
           if(prince->item != 0){
             char ans;
             if((item+prince->item)->Hp == 0){
@@ -162,7 +162,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             flag = 4;
           }
           break;
-        case 5://洗脳
+        case '5'://洗脳
           if(p_enemy->name != "極姫"){
             prob = GetRandomInt(1,10);
             for(int i = 1; i < 11; i++){
@@ -365,7 +365,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       com = _getch();
       system("cls");
       switch(com){
-        case 1://攻撃
+        case '1'://攻撃
           //主人公の攻撃
           random_num = (float)(GetRandomInt(750,1250))/1000.0;
           damage = (int)(((prince->Atk + weapon[prince->wep].Atk) * random_num) - p_enemy[EneNum].Def);
@@ -400,7 +400,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }
           }
           break;
-        case 2://スキル
+        case '2'://スキル
           if(prince->Mp > 0){
             char name_skill_1[256] = "スラッシュ";
             char name_skill_2[256] = "レーザービーム";
@@ -436,7 +436,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             printf("MPが無いためスキルは使用できません\n");
           }
           break;
-        case 3://武器スキル
+        case '3'://武器スキル
           if(weapon[prince->wep].Skill != 0){
             damage = 1500;
             printf("武器が壊れた!\n");
@@ -455,7 +455,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             flag = 4;
           }
           break;
-        case 4://アイテム
+        case '4'://アイテム
           if(prince->item != 0){
             char ans;
             if((item+prince->item)->Hp == 0){
@@ -488,7 +488,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             flag = 4;
           }
           break;
-        case 5://洗脳
+        case '5'://洗脳
           if(p_enemy->name != "極姫"){
             prob = GetRandomInt(1,10);
             for(int i = 1; i < 11; i++){
