@@ -177,7 +177,8 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
 		Sleep(500);
 	}
 	if(prince->item != 0){
-        char ans;
+		for(;;){
+			char ans;
             if((item+prince->item)->Hp == 0){
               printf("MPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Mp);
 			  fflush(stdin);
@@ -186,10 +187,11 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
                 prince->Mp += (item+prince->item)->Mp;
                 printf("MPを%d回復しました\n",(item+prince->item)->Mp);
                 prince->item = 0;
-              }else if {
-				  
+				break;
+              }else if (ans == 'n'){
+				 printf("使用しませんでした\n");
 			  }else{
-                printf("使用しませんでした\n");
+                printf("y/nで入力してください\n");
               }
             }else{
               printf("HPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Hp);
@@ -199,11 +201,14 @@ int game_event(Tokimeki_dungeon (*p)[5],Prince *prince,Princess_enemy *p_enemy,P
                 prince->Hp += (item+prince->item)->Hp;
                 printf("HPを%d回復しました\n",(item+prince->item)->Hp);
                 prince->item = 0;
-              }else{
-                printf("使用しませんでした\n");
+              }else if (ans == 'n'){
+				 printf("使用しませんでした\n");
+			  }else{
+                printf("y/nで入力してください\n");
               }
             }
 			Sleep(500);
+		}
     }	
 	return 0;
 	}
