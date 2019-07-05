@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "func.h"
 void Item_initialize(Weapon *pWep,Item *pItem){
-	pWep[0].name="";//武器を持っていない時
+	pWep[0].name="武器無し";//武器を持っていない時
 	pWep[0].Atk=0;//
 	pWep[0].Def=0;//
 	pWep[0].Skill=0;//
