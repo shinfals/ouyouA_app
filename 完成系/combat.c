@@ -9,7 +9,7 @@ int GetRandomInt(int min,int max);
 
 int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,Item *item,Weapon *weapon,int EneNum){
   int count = 1;//ターン数
-  int com;//コマンド選択肢
+  char com;//コマンド選択肢
   int flag = 0;//0:戦闘続行,1:勝利,2:洗脳勝利,3:敗北,4:コマンド選択に戻る,5:洗脳失敗
   int sup_flag = 0;//p_supportが生きているかどうか
   int atk_flag;//敵が主人公と味方姫どちらに攻撃するか
@@ -36,7 +36,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
 	  printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
-      com = getch();
+      com = _getch();
       system("cls");
       switch(com){
         case 1://攻撃
@@ -362,7 +362,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
       printf("1:攻撃 2:スキル 3:武器スキル 4:アイテム 5:洗脳\n");
       printf("コマンドを入力してください:");
       fflush(stdin);
-      com = getch();
+      com = _getch();
       system("cls");
       switch(com){
         case 1://攻撃
