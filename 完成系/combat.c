@@ -129,6 +129,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
+                flag = 4;
               }
             }else{
               printf("HPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Hp);
@@ -139,86 +140,93 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
+                flag = 4;
               }
             }
           }else{
             printf("アイテムが無いため使用できません\n");
+            flag = 4;
           }
-          flag = 4;
           break;
         case 5://洗脳
-          prob = GetRandomInt(1,10);
-          for(int i = 1; i < 11; i++){
-            if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
-              switch(i){
-                case 1://100%
-                  flag = 2;
-                  break;
-                case 2://90%
-                  if(prob != i){
+          if(p_enemy->name != "極姫"){
+            prob = GetRandomInt(1,10);
+            for(int i = 1; i < 11; i++){
+              if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
+                switch(i){
+                  case 1://100%
                     flag = 2;
+                    break;
+                  case 2://90%
+                    if(prob != i){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 3://80%
+                    if(prob != 1 && prob != 9){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 4://70%
+                    if(prob != 1 && prob != 3 && prob != 8){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 5://60%
+                    if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 6://50%
+                    if(prob%2 == 0){
+                      flag = 0;
+                    }
+                    flag = 5;
+                    break;
+                  case 7://40%
+                    if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 8://30%
+                    if(prob == 3 || prob == 6 || prob == 8){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 9://20%
+                    if(prob == 6 || prob == 9){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 10://10%
+                    if(prob == i){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
                   }
-                  flag = 5;
-                  break;
-                case 3://80%
-                  if(prob != 1 && prob != 9){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 4://70%
-                  if(prob != 1 && prob != 3 && prob != 8){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 5://60%
-                  if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 6://50%
-                  if(prob%2 == 0){
-                    flag = 0;
-                  }
-                  flag = 5;
-                  break;
-                case 7://40%
-                  if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 8://30%
-                  if(prob == 3 || prob == 6 || prob == 8){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 9://20%
-                  if(prob == 6 || prob == 9){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 10://10%
-                  if(prob == i){
-                    flag = 2;
-                  }
-                  flag = 5;
+                }
+                if(flag == 2 || flag == 5){
                   break;
                 }
-              }
-              if(flag == 2 || flag == 5){
-                break;
               }
             }
             //洗脳に成功or失敗したかの判定
             if(flag == 2){
               printf("洗脳に成功しました\n");
             }else if(flag == 5){
-              printf("洗脳に失敗しました\n");
+              if(p_enemy->name == "極姫"){
+                printf("極姫は洗脳できません\n");
+              }else{
+                printf("洗脳に失敗しました\n");
+              }
             }
             break;
           default:
@@ -415,6 +423,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
+                flag = 4;
               }
             }else{
               printf("HPを%d回復するポーションを保持しています。使用しますか？(y/n):",(item+prince->item)->Hp);
@@ -425,86 +434,93 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                 prince->item = 0;
               }else if(ans == 'n'){
                 printf("コマンド選択に戻ります\n");
+                flag = 4;
               }
             }
           }else{
             printf("アイテムが無いため使用できません\n");
+            flag = 4;
           }
-          flag = 4;
           break;
         case 5://洗脳
-          prob = GetRandomInt(1,10);
-          for(int i = 1; i < 11; i++){
-            if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
-              switch(i){
-                case 1://100%
-                  flag = 2;
-                  break;
-                case 2://90%
-                  if(prob != i){
+          if(p_enemy->name != "極姫"){
+            prob = GetRandomInt(1,10);
+            for(int i = 1; i < 11; i++){
+              if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
+                switch(i){
+                  case 1://100%
                     flag = 2;
+                    break;
+                  case 2://90%
+                    if(prob != i){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 3://80%
+                    if(prob != 1 && prob != 9){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 4://70%
+                    if(prob != 1 && prob != 3 && prob != 8){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 5://60%
+                    if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 6://50%
+                    if(prob%2 == 0){
+                      flag = 0;
+                    }
+                    flag = 5;
+                    break;
+                  case 7://40%
+                    if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 8://30%
+                    if(prob == 3 || prob == 6 || prob == 8){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 9://20%
+                    if(prob == 6 || prob == 9){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
+                  case 10://10%
+                    if(prob == i){
+                      flag = 2;
+                    }
+                    flag = 5;
+                    break;
                   }
-                  flag = 5;
-                  break;
-                case 3://80%
-                  if(prob != 1 && prob != 9){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 4://70%
-                  if(prob != 1 && prob != 3 && prob != 8){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 5://60%
-                  if(prob != 2 && prob != 3 && prob != 5 && prob != 7){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 6://50%
-                  if(prob%2 == 0){
-                    flag = 0;
-                  }
-                  flag = 5;
-                  break;
-                case 7://40%
-                  if(prob == 2 || prob == 4 || prob == 6 || prob == 10){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 8://30%
-                  if(prob == 3 || prob == 6 || prob == 8){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 9://20%
-                  if(prob == 6 || prob == 9){
-                    flag = 2;
-                  }
-                  flag = 5;
-                  break;
-                case 10://10%
-                  if(prob == i){
-                    flag = 2;
-                  }
-                  flag = 5;
+                }
+                if(flag == 2 || flag == 5){
                   break;
                 }
-              }
-              if(flag == 2 || flag == 5){
-                break;
               }
             }
             //洗脳に成功or失敗したかの判定
             if(flag == 2){
               printf("洗脳に成功しました\n");
             }else if(flag == 5){
-              printf("洗脳に失敗しました\n");
+              if(p_enemy->name == "極姫"){
+                printf("極姫は洗脳できません\n");
+              }else{
+                printf("洗脳に失敗しました\n");
+              }
             }
             break;
           default:
