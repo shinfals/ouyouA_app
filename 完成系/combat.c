@@ -612,7 +612,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
         }
       }
-	system("pause");
+	Sleep(2000);
   return flag;
 }
 
