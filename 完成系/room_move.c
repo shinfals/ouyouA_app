@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <conio.h>
 #include "func.h"
 
 void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
@@ -40,16 +42,14 @@ void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]){
         printf("\n");
         count++;
         if(count%ROOM_HEIGHT == 0){
-          //printf("\n");
         }
       }
-      //printf("\n");
     }
     for(;;){
 		char dir;
+		sleep(1);
 		printf("移動する方向をWASDで選択してください\n");
-		fflush(stdin);
-		scanf("%c",&dir);
+		dir=_getch();
 		switch(dir){
 			case 'w':
 			case 'W':
