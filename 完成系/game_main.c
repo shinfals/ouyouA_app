@@ -36,7 +36,7 @@ void gameMain(){
 		end_flag=game_event(&Tokimeki,&prince,&PEnemy,&PSupport,&Prince_support,&item,&weapon);
 
 		if(end_flag==1){
-			gemeEnd();
+			gameEnd();
 			sleep(3);
 			return ;
 		}else if(end_flag==3){

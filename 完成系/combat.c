@@ -116,6 +116,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }
           }else{
             printf("MPが無いためスキルは使用できません\n");
+			flag=4;
           }
           break;
         case '3'://武器スキル
@@ -452,6 +453,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             }
           }else{
             printf("MPが無いためスキルは使用できません\n");
+			flag=4;
           }
           break;
         case '3'://武器スキル
