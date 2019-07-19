@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include "func.h"
 #include <unistd.h>
 #include <conio.h>
@@ -10,10 +10,9 @@ void main (){
 	for(;;){
 		int s;
 		game_title();
-		system("cls");
 		printf("このゲームはフルスクリーン推奨です\n");
 		printf(u8"１：ゲームプレイ\n");
-		printf(u8"２：ゲームス終了\n");
+		printf(u8"２：ゲーム終了\n");
 		printf(u8"上記の中から数字を選択してください：");
 		fflush(stdin);
 		scanf("%d",&s);

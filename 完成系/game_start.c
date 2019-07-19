@@ -1,13 +1,13 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include "func.h"
 
 void gameStart(){
 	printf("game start!\n");
 	for(;;){
 		int s;
-		printf("1：ゲームルール表示\n");
-		printf("2：ゲームスタート\n");
-		printf("3:ゲームシナリオ\n");
+		printf(" 1：ゲームルール表示\n");
+		printf(" 2：ゲームスタート\n");
+		printf(" 3：ゲームシナリオ\n");
 		printf("上記の中から数字を選択してください：");
 		fflush(stdin);
 		scanf("%d",&s);
