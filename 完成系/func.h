@@ -6,7 +6,8 @@
 void gameMain();
 void gameStart();
 void game_rule();
-void game_end();
+void gameEnd();
+void game_scenario();
 int end_initialize();
 void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]);
 void room_display(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]);
