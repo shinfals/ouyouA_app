@@ -1,2 +1,2 @@
 gcc game_title.c 
-pause
+a.exe
