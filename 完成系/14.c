@@ -9,6 +9,7 @@ void main (){
 	
 	for(;;){
 		int s;
+                system("cls");
 		game_title();
 		printf("このゲームはフルスクリーン推奨です\n");
 		printf(u8"１：ゲームプレイ\n");
