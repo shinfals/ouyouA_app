@@ -6,8 +6,10 @@
 //グローバル変数などあれば
 void main (){
 	system("chcp 65001");
+	
 	for(;;){
 		int s;
+		game_title();
 		printf("このゲームはフルスクリーン推奨です\n");
 		printf(u8"１：ゲームプレイ\n");
 		printf(u8"２：ゲームス終了\n");

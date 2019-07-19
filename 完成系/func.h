@@ -7,6 +7,7 @@ void gameMain();
 void gameStart();
 void game_rule();
 void gameEnd();
+void game_title();
 void game_scenario();
 int end_initialize();
 void room_move(Prince *prince,Tokimeki_dungeon (*p)[5],int (*mp)[MAP_HEIGHT]);
