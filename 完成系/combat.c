@@ -97,6 +97,25 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   Sleep(300);
                   prince->Mp--;
                 }
+                if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
+                  random_num = (float)(GetRandomInt(750,1250))/1000.0;
+                  damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
+                  if(damage <= 0){
+                    printf("味方姫:敵にダメージを与えられませんでした\n");
+                    Sleep(300);
+                  }else{
+                    p_enemy[EneNum].Hp -= damage;
+                  }
+                  if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+                    printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                    Sleep(300);
+                    printf("勝利しました\n");
+                    flag = 1;
+                  }else if(damage > 0){
+                    printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                    Sleep(300);
+                  }
+                }
                 break;
               case 1://レーザービーム
                 damage = 500;
@@ -111,6 +130,25 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
                   Sleep(300);
                   prince->Mp--;
+                  if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
+                    random_num = (float)(GetRandomInt(750,1250))/1000.0;
+                    damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
+                    if(damage <= 0){
+                      printf("味方姫:敵にダメージを与えられませんでした\n");
+                      Sleep(300);
+                    }else{
+                      p_enemy[EneNum].Hp -= damage;
+                    }
+                    if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                      printf("勝利しました\n");
+                      flag = 1;
+                    }else if(damage > 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                    }
+                  }
                 }
                 break;
             }
@@ -433,6 +471,25 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_1,damage);
                   Sleep(300);
                   prince->Mp--;
+                  if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
+                    random_num = (float)(GetRandomInt(750,1250))/1000.0;
+                    damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
+                    if(damage <= 0){
+                      printf("味方姫:敵にダメージを与えられませんでした\n");
+                      Sleep(300);
+                    }else{
+                      p_enemy[EneNum].Hp -= damage;
+                    }
+                    if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                      printf("勝利しました\n");
+                      flag = 1;
+                    }else if(damage > 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                    }
+                  }
                 }
                 break;
               case 1://レーザービーム
@@ -448,6 +505,25 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
                   printf("スキル:%sで%dダメージを与えました\n",name_skill_2,damage);
                   Sleep(300);
                   prince->Mp--;
+                  if(p_support->Hp > 0 && flag == 0){//味方姫がいれば攻撃
+                    random_num = (float)(GetRandomInt(750,1250))/1000.0;
+                    damage = (int)((p_support->Atk * random_num) - p_enemy[EneNum].Def);
+                    if(damage <= 0){
+                      printf("味方姫:敵にダメージを与えられませんでした\n");
+                      Sleep(300);
+                    }else{
+                      p_enemy[EneNum].Hp -= damage;
+                    }
+                    if(p_enemy[EneNum].Hp <= 0 && flag == 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                      printf("勝利しました\n");
+                      flag = 1;
+                    }else if(damage > 0){
+                      printf("味方姫:敵に%dのダメージを与えました\n",damage);
+                      Sleep(300);
+                    }
+                  }
                 }
                 break;
             }
