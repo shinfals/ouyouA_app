@@ -212,7 +212,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           break;
         case '5'://洗脳
-          if(p_enemy->name != "極姫"){
+          if(p_enemy[EneNum].name != "極姫"){
             prob = GetRandomInt(1,10);
             for(int i = 1; i < 11; i++){
               if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
@@ -294,7 +294,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             if(flag == 2){
               printf("洗脳に成功しました\n");
             }else if(flag == 5){
-              if(p_enemy->name == "極姫"){
+              if(p_enemy[EneNum].name == "極姫"){
                 printf("極姫は洗脳できません\n");
                 Sleep(300);
               }else{
@@ -587,7 +587,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
           }
           break;
         case '5'://洗脳
-          if(p_enemy->name != "極姫"){
+          if(p_enemy[EneNum].name != "極姫"){
             prob = GetRandomInt(1,10);
             for(int i = 1; i < 11; i++){
               if((e_max_hp/10)*i >= p_enemy[EneNum].Hp){
@@ -669,7 +669,7 @@ int combat(Prince *prince,Princess_enemy *p_enemy,Princess_support *p_support,It
             if(flag == 2){
               printf("洗脳に成功しました\n");
             }else if(flag == 5){
-              if(p_enemy->name == "極姫"){
+              if(p_enemy[EneNum].name == "極姫"){
                 printf("極姫は洗脳できません\n");
                 Sleep(300);
               }else{
